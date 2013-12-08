@@ -112,40 +112,5 @@ def main():
                 print "hello"
 
 
-
-
-
-def imageRed(refImage ): # refImage is going to have to be changed to equal the image that is being viewed.
-    for x in range(len(refImage))
-        for y in range(len(refImage))
-            a = refImage[x][y][0]
-            b = refImage[x][y][1]
-            c = refImage[x][y][2]
-            if refImage[x][y][0] < 100:
-                if b and c < 100:
-                    refImage[x][y] = (a + 100, b,c)
-                else:
-                    refImage[x][y] = (a + 100, b-50,c-50)
-            elif b and c < 100:
-                refImage[x][y] = (a, b,c)
-            else:
-                refImage[x][y] = (a, b-50,c-50)
-                
-                
-                
-                
-
-    return refImage
-
-
-
-
-
-
-
-
-
-
-
             
 if __name__ == '__main__': main()

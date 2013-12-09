@@ -71,5 +71,10 @@ def crayon(new_image):
       
   return new_image
 
-  
-  
+#This filter intensifies the blue.
+def whaleBlueFilter(n_img):
+        n_img[x][y] = ((n_img[x][y][0])*0)/1, ((n_img[x][y][1]*.4))/1,((n_img[x][y][2])*.7)/1
+
+  return n_img
+
+

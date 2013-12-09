@@ -32,9 +32,7 @@ background.blit(background,(0,0))
 screen=view.display.set_mode(CANVAS,locals.NOFRAME,32)
 screen=view.Surface.fill(screen,(OLIVE))
 clocky=view.time.Clock
-chazsurface=view.image.load("chazzy.png")
 
-chazrect=chazsurface.get_rect()
 
 b1=view.Surface((30,30))
 br1=view.Rect(85,185,30,30)

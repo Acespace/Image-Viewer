@@ -1,5 +1,5 @@
 #Here
-
+#alston
 def tieDye(new_image):
 
       for x in range (len(new_image)):
@@ -28,6 +28,8 @@ def tieDye(new_image):
       
   return new_image
   
+#Alston
+  
   def BlackandWhite(refImage):
     
   for x in range (len(refImage)):
@@ -45,7 +47,29 @@ def tieDye(new_image):
     return refImage
 
 
-  
-  
+  #Alston
+def crayon(new_image):
+
+  test = 0 
+
+    
+  for x in range (len(new_image)):
+    for y in range (len(new_image)):
+      h,i,j = new_image[x][y][0],new_image[x][y][1],new_image[x][y][2]
+      
+      a,b,c = new_image[x][y][0],new_image[x][y][1],new_image[x][y][2]
+      average =(a + b + c) / 3      
+      test = new_image[x-1][y-1][0]
+      minusfive = new_image[x][y][0]
+      minusfive = minusfive - 5
+      plusfive = new_image[x][y][0]
+      plusfive = plusfive + 5
+
+      if (test > plusfive) or (test < minusfive):
+        new_image[x-1][y-1] = (0,0,0)
+              
+      
+  return new_image
+
   
   

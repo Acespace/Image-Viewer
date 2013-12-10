@@ -3,6 +3,9 @@ import pygame as view
 import ImageGrab as cam
 from pygame import time
 from pygame import image
+from filters import glacierBlue()
+from filters import yellowDayFilter()
+from filters import crayon()
 import filter_functions as fil
 BLACK=(0,0,0)
 WHITE=(255,255,255)

@@ -23,11 +23,11 @@ filters=[fil.filterone(),fil.filtertwo(),fil.filterthree()]
 def main():
     view.init() 
     cam.grab((0,0,800,800)).save('screenst.png','png')
-    startimage=openImage('canvasimg')
-    currentimg=startimage
+    #startimage=openImage('canvasimg')
+    currentimg=open('currentimg.png')
     FPS=30
     #canvas
-    canvas=view.image.load('canvasimg.png')
+    canvas=view.image.load("canvasimg.png")
     #canvas=view.Surface((500,600))
     canvasrect=canvas.get_rect()
     #canvas.fill((250,250,250))
@@ -79,7 +79,7 @@ def main():
                 for button in [0,1,2,3]:                
                     if buttonrect[button].collidepoint(mousepos):
                         currentimg=negativeFilter(currentimg)
-                        createImage(currentimg,'canvasimg')
+                        createImage(currentimg,'outcanvasimg')
 
                         #buttonrect[button]=buttonrect[button]
                         #filters[button]()

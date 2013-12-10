@@ -1,140 +1,91 @@
-import sys, pygame
+from pygame import locals
+import pygame as view
+import ImageGrab as cam
+from pygame import time
+from pygame import image
+import filter_functions as fil
+from spyi import createImage
+from spyi import openImage
+from decode import negativeFilter
+BLACK=(0,0,0)
+WHITE=(255,255,255)
+OLIVE=(128,128,0)
+MAROON=(128,0,0)
+BACKGROUND=(800,800)
+CANVAS=(600,600)
 
-from pygame import time 
+#grab screenshot backgound
 
-
-from pygame import * 
-
-
-
-
-
-
-def swell(button, base):
-
-    button = pygame.Rect(0, 0, 90, 65 )
-    #button = pygame.Rect(100, 500, 90, 65 )
-
-    # blueButton = pygame.Rect(100, 500, 90, 65 )
-    pygame.draw.rect(base, (255,255,255), button)
-
-
-
-    return button,
+filters=[fil.filterone(),fil.filtertwo(),fil.filterthree()]
 
 
 
-def swell(bl, pos):
-
-    x,y = pos
-
-    for b in bl:
-        if b.collidepoint(x,y):
-            b.inflate(30,30)
-
-            
-
-
-    
-
-
-
-
-    
-
-    
 def main():
-
-    # Initialise screen
-    pygame.init()
-    size = width, height = 600, 600
-    # was 550,600
-
-    screen = pygame.display.set_mode(size)
-
-    screen.fill((255,255,255))
-    # Makes whole screen white
-    
-  
-    leftWall = pygame.Rect(0, 0, 60, 600)
-    
-    pygame.draw.rect(screen,(64,50,132), leftWall,0)
-    # makes left wall
-
-    rightWall = pygame.Rect(540, 0, 60, 600)
-
-    pygame.draw.rect(screen,(60,3,26), rightWall,0)
-    # makes right wall
-
-    baseLayer = pygame.Rect(60, 480, 480, 120)
-
-    # makes button button holder (rectangle)
-
-    pygame.draw.rect(screen,(104,114,113), baseLayer,0)
-
-
-
-    #red button
-    ButtonList=[]
-    redButton = pygame.Rect(100, 500, 90, 65 )
-    ButtonList.append(redButton)
-    pygame.draw.rect(screen, (100,0,0), redButton)
-
-    #green button
-    greenButton = pygame.Rect(250, 500, 90, 65 )
-    ButtonList.append(greenButton)
-    pygame.draw.rect(screen, (0,100,0), greenButton)
-
-    #blue button 
-    blueButton = pygame.Rect(400, 500, 90, 65 )
-    ButtonList.append(blueButton)
-    pygame.draw.rect(screen, (0,0,100), blueButton)
-
-
-
-    
-    mousePos = pygame.mouse.get_pos()
-    
-
-
-            
-            
-
-    
- 
-    
-        
-    while True :
-        pygame.display.update()
-        swell(ButtonList,mousePos)
-        for event in pygame.event.get():
-            if event.type == QUIT:
-                pygame.quit()
-                sys.exit()
-
-
-            
-            
-
-
-            
-
-                print "hello"
+    view.init() 
+    cam.grab((0,0,800,800)).save('screenst.png','png')
+    startimage=openImage('canvasimg')
+    currentimg=startimage
+    FPS=30
+    #canvas
+    canvas=view.image.load('canvasimg.png')
+    #canvas=view.Surface((500,600))
+    canvasrect=canvas.get_rect()
+    #canvas.fill((250,250,250))
+    #screen
+    screen=view.display.set_mode((600,600),locals.NOFRAME,32)
+    view.display.set_caption("imageviewer")
+    screen.fill((OLIVE))
+    #background
+    background=image.load('screenst.png')
+    #background=view.Surface((800,800))
+    #background.fill((250,250,250))
+    #buttons 
+    background.blit(canvas,canvasrect)
+    b1=view.Surface((30,30))
+    b1.fill(OLIVE)
+    br1=b1.get_rect()
+    br1.center=(85,185)
+    background.blit(b1,br1)
+    b2=view.Surface((30,30))
+    b2.fill(OLIVE)
+    br2=b2.get_rect()
+    br2.center=(135,285)
+    background.blit(b2,br2)
+    b3=view.Surface((30,30))
+    b3.fill(OLIVE)
+    br3=b3.get_rect()
+    br3.center=(365,485)
+    background.blit(b3,br3)
+    b4=view.Surface((30,30))
+    b4.fill(OLIVE)
+    br4=b4.get_rect()
+    br4.center=(485,485)
+    background.blit(b4,br4)
+    buttons=[b1,b2,b3,b4]
+    buttonrect=[br1,br2,br3,br4]
+    screen.blit(background,(0,0))
 
 
 
 
 
+    while True: 
+        #next frame   
+        view.display.update()
+        for ev in view.event.get():
+            #mouse event
+            if ev.type==locals.MOUSEBUTTONDOWN:
+                mousepos=view.mouse.get_pos()
+                for button in [0,1,2,3]:                
+                    if buttonrect[button].collidepoint(mousepos):
+                        currentimg=negativeFilter(currentimg)
+                        createImage(currentimg,'canvasimg')
+
+                        #buttonrect[button]=buttonrect[button]
+                        #filters[button]()
+            if ev.type==locals.QUIT:
+                pass
+                #view.quit()
 
 
-
-
-
-
-
-
-
-
-
-            
-if __name__ == '__main__': main()
+if __name__=='__main__': main()

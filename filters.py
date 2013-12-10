@@ -80,8 +80,10 @@ def whaleBlueFilter(n_img):
 
 # This filter lay's a yellow sunlight feel over the image.
 def yellowDayFilter(r_img, g_img, b_img):
-        n_img[x][y] = ((n_img[x][y][0])*.7)/1, ((n_img[x][y][1])*.6)/1,((n_img[x][y][2])*.003)/1 
-  return n_img
+      for x in range(len(img)):
+            for y in range (len(img[0]):
+                  n_img[x][y] = ((n_img[x][y][0])*.7)/1, ((n_img[x][y][1])*.6)/1,((n_img[x][y][2])*.003)/1 
+      return n_img
 
 
 

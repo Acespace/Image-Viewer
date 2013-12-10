@@ -86,17 +86,6 @@ def yellowDayFilter(r_img, g_img, b_img):
 
 
 
-#This filter makes the image take on a bluish tinge.
-def glacierBlue(r_img, g_img, b_img):
-  n_img = b_img
-  for x in range(len(r_img)):
-      for y in range(len(g_img[0])):
-        a,b,c = r_img[x][y]
-        d,e,f = g_img[x][y]
-        g,h,i = b_img[x][y]
-        n_img[x][y] = (a, e,i)
 
-        n_img[x][y] = ((n_img[x][y][0])*.105)/1, ((n_img[x][y][1]*.50))/1,((n_img[x][y][2])*.87)/1
-  return n_img
 
 

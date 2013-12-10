@@ -39,30 +39,29 @@ def main():
     #background.fill((250,250,250))
     #buttons 
     background.blit(canvas,canvasrect)
-    b1=view.Surface((30,30))
-    b1.fill(OLIVE)
+    b1=view.Surface((48,48))
+    b1.fill((34,171,181))
     br1=b1.get_rect()
     br1.center=(85,185)
     background.blit(b1,br1)
-    b2=view.Surface((30,30))
-    b2.fill(OLIVE)
+    b2=view.Surface((48,48))
+    b2.fill((34,171,181))
     br2=b2.get_rect()
     br2.center=(135,285)
     background.blit(b2,br2)
-    b3=view.Surface((30,30))
-    b3.fill(OLIVE)
+    b3=view.Surface((48,48))
+    b3.fill((34,171,181))
     br3=b3.get_rect()
-    br3.center=(365,485)
+    br3.center=(300,440)
     background.blit(b3,br3)
-    b4=view.Surface((30,30))
-    b4.fill(OLIVE)
+    b4=view.Surface((48,48))
+    b4.fill((34,171,181))
     br4=b4.get_rect()
-    br4.center=(485,485)
+    br4.center=(450,440)
     background.blit(b4,br4)
     buttons=[b1,b2,b3,b4]
     buttonrect=[br1,br2,br3,br4]
     screen.blit(background,(0,0))
-
 
 
 
